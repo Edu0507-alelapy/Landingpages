@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyección - La Huanuqueñita</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            <h1>La Huanuqueñita</h1>
+            <p>Proyección de ventas</p>
+        </div>
+
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="platos.html">Platos</a>
+            <a href="insumos.html">Insumos</a>
+            <a href="proyeccion.html">Proyección</a>
+        </nav>
+
+    </header>
+
+    <!-- TITULO -->
+
+    <section class="titulo-page">
+
+        <h2>Proyección Semanal</h2>
+
+        <p>
+            Calcule ventas, gastos y ganancias estimadas.
+        </p>
+
+    </section>
+
+    <!-- FORMULARIO -->
+
+    <section class="calculadora">
+
+        <div class="calculadora-box">
+
+            <input type="text" id="plato" placeholder="Nombre del plato">
+
+            <input type="number" id="cantidad" placeholder="Cantidad vendida">
+
+            <input type="number" id="precio" placeholder="Precio por plato">
+
+            <input type="number" id="gasto" placeholder="Gasto en insumos">
+
+            <button onclick="calcularVentas()">
+                Calcular Proyección
+            </button>
+
+        </div>
+
+        <!-- RESULTADOS -->
+
+        <div class="resultado">
+
+            <h3 id="resultadoVentas">
+                Ventas Totales: S/0
+            </h3>
+
+            <h3 id="resultadoGanancia">
+                Ganancia Estimada: S/0
+            </h3>
+
+            <h3 id="resultadoProyeccion">
+                Proyección Semanal: S/0
+            </h3>
+
+        </div>
+
+    </section>
+
+    <!-- SCRIPT -->
+
+    <script>
+
+        function calcularVentas(){
+
+            let cantidad =
+            document.getElementById("cantidad").value;
+
+            let precio =
+            document.getElementById("precio").value;
+
+            let gasto =
+            document.getElementById("gasto").value;
+
+            let ventas = cantidad * precio;
+
+            let ganancia = ventas - gasto;
+
+            let proyeccion = ganancia * 4;
+
+            document.getElementById("resultadoVentas").innerHTML =
+            "Ventas Totales: S/" + ventas;
+
+            document.getElementById("resultadoGanancia").innerHTML =
+            "Ganancia Estimada: S/" + ganancia;
+
+            document.getElementById("resultadoProyeccion").innerHTML =
+            "Proyección Semanal: S/" + proyeccion;
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insumos - La Huanuqueñita</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            <h1>La Huanuqueñita</h1>
+            <p>Control de insumos</p>
+        </div>
+
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="platos.html">Platos</a>
+            <a href="insumos.html">Insumos</a>
+            <a href="proyeccion.html">Proyección</a>
+        </nav>
+
+    </header>
+
+    <!-- TITULO -->
+
+    <section class="titulo-page">
+
+        <h2>Registro de Insumos</h2>
+
+        <p>
+            Gestión semanal de compras e inventario.
+        </p>
+
+    </section>
+
+    <!-- FORMULARIO -->
+
+    <section class="calculadora">
+
+        <div class="calculadora-box">
+
+            <input type="text" id="insumo" placeholder="Nombre del insumo">
+
+            <input type="text" id="cantidad" placeholder="Cantidad">
+
+            <input type="number" id="costo" placeholder="Costo">
+
+            <input type="text" id="proveedor" placeholder="Proveedor">
+
+            <select id="estado">
+
+    <option value="activo">
+        Disponible
+    </option>
+
+    <option value="medio">
+        Poco Stock
+    </option>
+
+    <option value="bajo">
+        Agotado
+    </option>
+
+</select>
+
+            <button onclick="agregarInsumo()">
+                Agregar Insumo
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- TABLA -->
+
+    <section class="tabla-section">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Insumo</th>
+                    <th>Cantidad</th>
+                    <th>Costo</th>
+                    <th>Proveedor</th>
+                    <th>Estado</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="tablaInsumos">
+
+                <tr>
+                    <td>Arroz</td>
+                    <td>50 kg</td>
+                    <td>S/250</td>
+                    <td>Mercado Central</td>
+                    <td>
+                        <span class="activo">
+                            Disponible
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Pollo</td>
+                    <td>30 kg</td>
+                    <td>S/420</td>
+                    <td>Avícola Perú</td>
+                    <td>
+                        <span class="medio">
+                            Poco Stock
+                        </span>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+    <!-- SCRIPT -->
+
+    <script>
+
+        function agregarInsumo(){
+
+            let insumo =
+            document.getElementById("insumo").value;
+
+            let cantidad =
+            document.getElementById("cantidad").value;
+
+            let costo =
+            document.getElementById("costo").value;
+
+            let proveedor =
+            document.getElementById("proveedor").value;
+
+            let estado =
+            document.getElementById("estado").value;
+
+            if(
+                insumo == "" ||
+                cantidad == "" ||
+                costo == "" ||
+                proveedor == ""
+            ){
+                alert("Complete todos los campos");
+                return;
+            }
+
+            let tabla =
+            document.getElementById("tablaInsumos");
+
+            tabla.innerHTML += `
+
+            <tr>
+
+                <td>${insumo}</td>
+
+                <td>${cantidad}</td>
+
+                <td>S/${costo}</td>
+
+                <td>${proveedor}</td>
+
+                <td>
+                    <span class="${estado}">
+
+    ${
+        estado == "activo"
+        ? "Disponible"
+        : estado == "medio"
+        ? "Poco Stock"
+        : "Agotado"
+    }
+
+</span>
+                </td>
+
+            </tr>
+
+            `;
+
+            document.getElementById("insumo").value = "";
+            document.getElementById("cantidad").value = "";
+            document.getElementById("costo").value = "";
+            document.getElementById("proveedor").value = "";
+        }
+
+    </script>
+
+</body>
+</html>
